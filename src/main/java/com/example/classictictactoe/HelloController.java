@@ -22,8 +22,15 @@ public class HelloController {
     @FXML
     void btnClick(ActionEvent event) {
         Button btn = (Button)event.getSource();
-        int rowIndex = GridPane.getRowIndex(btn);
-        int columnIndex = GridPane.getColumnIndex(btn);
+
+        int rowIndex = GridPane.getRowIndex(btn) == null ? 0 : GridPane.getRowIndex(btn);
+        int columnIndex = GridPane.getColumnIndex(btn) == null ? 0 : GridPane.getColumnIndex(btn);
+
+        gameField[rowIndex][columnIndex] = nowSym;
+
+        //System.out.println(rowIndex);
+        //System.out.println(columnIndex);
+
 
         btn.setText(String.valueOf(nowSym));
         nowSym = nowSym == 'x' ? 'o' : 'x';
